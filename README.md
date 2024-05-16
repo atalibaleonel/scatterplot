@@ -2,7 +2,6 @@
 
 - English -
 
-Sure! Let me explain the Python code step by step:
 
 ```python
 import numpy as np
@@ -73,7 +72,7 @@ plt.show()
 
 - `plt.show()`: Displays the plot.
 
-I hope this clarifies how the code works! If you have any further questions, feel free to ask!
+
 
 - Português -
 ```python
