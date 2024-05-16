@@ -1,6 +1,81 @@
 # scatterplot
 
+- English -
 
+Sure! Let me explain the Python code step by step:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
+```
+
+- `import numpy as np`: Imports the NumPy library with the alias `np`. NumPy is a library for numerical computing in Python. It provides support for arrays and matrices, along with mathematical functions to operate on these arrays.
+  
+- `import matplotlib.pyplot as plt`: Imports the Matplotlib library with the alias `plt`. Matplotlib is a library for creating plots in Python. `matplotlib.pyplot` provides an interface for creating figures and axes in Python.
+  
+- `from scipy.stats import pearsonr`: Imports the `pearsonr` function from the SciPy library. The `pearsonr` function is used to calculate the Pearson correlation coefficient between two variables.
+
+```python
+# Generating random data with a non-linear relationship
+np.random.seed(0)
+price_euro = np.random.randint(10, 100, size=50)
+price = price_euro * 1.18  # Converting to Euros
+units_sold = 1000 / (price + np.random.normal(scale=10, size=50))
+```
+
+- `np.random.seed(0)`: Sets a seed to ensure that the randomly generated numbers are the same in all code executions. This makes the results reproducible.
+
+- `price_euro = np.random.randint(10, 100, size=50)`: Generates 50 random integers between 10 and 100, representing the price of the products in Euros.
+
+- `price = price_euro * 1.18`: Converts the prices to Euros by multiplying them by 1.18.
+
+- `units_sold = 1000 / (price + np.random.normal(scale=10, size=50))`: Generates the number of units sold for each price. The relationship between price and units sold is non-linear. The number of units sold is calculated as 1000 divided by the price plus a normally distributed random value with mean zero and standard deviation 10.
+
+```python
+# Calculating the correlation coefficient
+corr, _ = pearsonr(price, units_sold)
+```
+
+- `corr, _ = pearsonr(price, units_sold)`: Calculates the Pearson correlation coefficient between price and units sold. The correlation coefficient measures the strength and direction of the linear relationship between two variables. Here, we are interested in the correlation between the product price and the number of units sold.
+
+```python
+# Creating the scatter plot with trend line
+plt.figure(figsize=(8, 6))
+plt.scatter(price, units_sold, color='blue', alpha=0.5)
+plt.plot(np.unique(price), np.poly1d(np.polyfit(price, units_sold, 2))(np.unique(price)), color='red')
+```
+
+- `plt.figure(figsize=(8, 6))`: Creates a new figure with the specified size (width: 8 inches, height: 6 inches).
+
+- `plt.scatter(price, units_sold, color='blue', alpha=0.5)`: Creates a scatter plot of prices versus units sold. Each point on the plot represents a pair of values (price, units sold).
+
+- `plt.plot(np.unique(price), np.poly1d(np.polyfit(price, units_sold, 2))(np.unique(price)), color='red')`: Adds a trend line to the scatter plot. The trend line is fitted using a second-degree polynomial to the data.
+
+```python
+# Adding labels and title
+plt.title(f'Relationship between Price and Units Sold (Correlation: {corr:.2f})')
+plt.xlabel('Price (€)')
+plt.ylabel('Units Sold')
+
+# Displaying the plot
+plt.grid(True)
+plt.show()
+```
+
+- `plt.title(f'Relationship between Price and Units Sold (Correlation: {corr:.2f})')`: Adds a title to the plot that includes the correlation coefficient between price and units sold.
+
+- `plt.xlabel('Price (€)')`: Adds a label to the x-axis indicating that prices are in Euros.
+
+- `plt.ylabel('Units Sold')`: Adds a label to the y-axis indicating that units sold are the number of units sold.
+
+- `plt.grid(True)`: Adds grid lines to the plot.
+
+- `plt.show()`: Displays the plot.
+
+I hope this clarifies how the code works! If you have any further questions, feel free to ask!
+
+- Português -
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
