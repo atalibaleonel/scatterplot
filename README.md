@@ -1,5 +1,5 @@
 # scatterplot
-Claro! Vou explicar o código Python passo a passo:
+
 
 ```python
 import numpy as np
@@ -70,4 +70,4 @@ plt.show()
 
 - `plt.show()`: Exibe o gráfico.
 
-Espero que isso esclareça como o código funciona! Se tiver mais alguma dúvida, estou à disposição para ajudar!
+
